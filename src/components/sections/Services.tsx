@@ -30,40 +30,40 @@ const Services = () => {
 
   const headingText = 'What I Do';
   const descriptionText =
-    "I specialize in building full-stack web applications that are fast, reliable, and user-friendly. With a solid foundation in both frontend and backend technologies, I help bring ideas to life whether it's for a business, a startup, or a product team.";
+    "I specialize in building complex enterprise systems and scaling products from zero to one. With a solid foundation in both frontend and backend technologies, I help bring ideas to life while leveraging AI to achieve exceptional engineering velocity.";
 
   const services = [
     {
       id: '01',
-      title: 'Full Stack Development',
+      title: 'Zero-to-One Architecture',
       description:
-        'End-to-end development of modern web applications, covering everything from frontend interfaces to backend APIs. I build complete, maintainable, and scalable systems using the MERN stack and modern tooling.',
+        'Successfully architected and deployed multiple enterprise products from scratch, serving as a one-person product and engineering powerhouse.',
       items: [
-        'MERN Stack (MongoDB, Express.js, React, Node.js)',
-        'REST APIs & Integration',
-        'Authentication & Authorization',
+        'Frontend ecosystems (React, Vite, Next.js)',
+        'Scalable backends (Node.js, FastAPI, Prisma)',
+        'Multi-tenant Data Isolation',
       ],
     },
     {
       id: '02',
-      title: 'Frontend Development',
+      title: 'System Integration & Backend',
       description:
-        'Crafting responsive, accessible, and elegant interfaces that deliver exceptional user experiences. I focus on clarity, performance, and seamless interaction across devices.',
+        'Mastered complex domain-specific architectures by building bidirectional data sync engines and robust RESTful APIs. Actively debug, optimize, and ship backend fixes.',
       items: [
-        'React, Next.js, TailwindCSS, GSAP',
-        'Optimized Rendering & Animations',
-        'Figma to Code Implementation',
+        'Node.js & Python/FastAPI',
+        'PostgreSQL & Prisma ORM',
+        'Real-time webhooks & integrations',
       ],
     },
     {
       id: '03',
-      title: 'Optimization & Performance',
+      title: 'AI-Augmented Development',
       description:
-        'Optimizing codebases, APIs, and assets for speed, scalability, and maintainability. I ensure your applications run efficiently with best practices in caching, SEO, and deployment.',
+        'Pioneered Agentic AI workflows to drastically cut time-to-market for major features. Achieved exceptional output velocity leveraging modern AI tools.',
       items: [
-        'Performance Tuning & Code Refactoring',
-        'SEO & Accessibility Optimization',
-        'Deployment (Vercel, AWS, Docker)',
+        'Claude 3.5 & Gemini Pro workflows',
+        'AI Automation & Code Generation',
+        'Rapid Tech Migrations',
       ],
     },
   ];

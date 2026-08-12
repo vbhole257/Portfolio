@@ -182,10 +182,10 @@ export default function ProjectDetails({ project }: { project: Project }) {
         <div className="text-center">
           <p className="text-muted text-lg">Have a project in mind?</p>
           <a
-            href="mailto:aitezazsikandar@gmail.com"
-            className="text-xl font-semibold text-[#bab6b3] hover:text-[#d4d2d0] transition"
+            href="mailto:vbhole257@gmail.com"
+            className="group relative inline-block text-[clamp(1.5rem,5vw,2.5rem)] font-display font-black text-light uppercase leading-none no-underline hover:text-accent transition-colors duration-300 max-w-full truncate"
           >
-            aitezazsikandar@gmail.com
+            vbhole257@gmail.com
           </a>
         </div>
         <button

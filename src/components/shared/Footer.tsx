@@ -21,7 +21,7 @@ const Footer = () => {
     const updateTime = () => {
       const now = new Date();
       const timeString = now.toLocaleTimeString('en-US', {
-        hour: '2-digit', minute: '2-digit', hour12: true, timeZone: 'Asia/Karachi',
+        hour: '2-digit', minute: '2-digit', hour12: true, timeZone: 'Asia/Kolkata',
       });
       setCurrentTime(timeString);
     };
@@ -93,22 +93,17 @@ const Footer = () => {
             </h3>
             <ul className="flex flex-col gap-3 sm:gap-4 text-warm text-xs sm:text-sm font-sans font-medium uppercase tracking-wide">
               <AnimatedLink>
-                <a href="https://linkedin.com/in/aitezaz-sikandar" target="_blank" rel="noopener noreferrer">
+                <a href="https://linkedin.com/in/vaibhav-bhole-0302" target="_blank" rel="noopener noreferrer">
                   Linkedin
                 </a>
               </AnimatedLink>
               <AnimatedLink>
-                <a href="https://instagram.com/ur_zaz" target="_blank" rel="noopener noreferrer">
-                  Instagram
-                </a>
-              </AnimatedLink>
-              <AnimatedLink>
-                <a href="https://github.com/aitezazdev" target="_blank" rel="noopener noreferrer">
+                <a href="https://github.com/bholevaibhav" target="_blank" rel="noopener noreferrer">
                   Github
                 </a>
               </AnimatedLink>
               <AnimatedLink>
-                <a href="https://github.com/aitezazdev/Portfolio" target="_blank" rel="noopener noreferrer">
+                <a href="https://github.com/bholevaibhav/Portfolio" target="_blank" rel="noopener noreferrer">
                   Source Code
                 </a>
               </AnimatedLink>
@@ -120,7 +115,7 @@ const Footer = () => {
               Local Time
             </h3>
             <p className="text-warm text-sm sm:text-base font-sans font-medium tracking-wide">
-              {isMounted && currentTime ? `${currentTime} PKT` : 'Loading local time...'}
+              {isMounted && currentTime ? `${currentTime} IST` : 'Loading local time...'}
             </p>
           </div>
         </div>

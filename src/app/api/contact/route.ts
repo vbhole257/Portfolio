@@ -198,7 +198,7 @@ export async function POST(request: Request) {
       port: 465,
       secure: true,
       auth: {
-        user: 'aitezazsikandar@gmail.com',
+        user: 'vbhole257@gmail.com',
         pass: process.env.GMAIL_APP_PASSWORD,
       },
       lookup: (
@@ -211,8 +211,8 @@ export async function POST(request: Request) {
     } as any);
 
     await transporter.sendMail({
-      from: `"Portfolio Contact" <aitezazsikandar@gmail.com>`,
-      to: 'aitezazsikandar@gmail.com',
+      from: `"Portfolio Contact" <vbhole257@gmail.com>`,
+      to: 'vbhole257@gmail.com',
       replyTo: cleanReplyEmail,
       subject: `New message from ${cleanHeader(trimmedName)}`,
       html: `<p><strong>Name:</strong> ${escapedName}</p><p><strong>Email:</strong> ${escapeHtml(cleanReplyEmail)}</p><p><strong>Message:</strong></p><p>${escapedMessage}</p>`,

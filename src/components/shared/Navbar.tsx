@@ -230,18 +230,18 @@ const FullscreenMenu: React.FC<FullscreenMenuProps> = ({ isOpen, isTransitioning
           <div className="space-y-1 text-left">
             <p className="text-gray-mid font-mono text-xs uppercase tracking-widest mb-2">Get in Touch</p>
             <a
-              href="mailto:aitezazsikandar@gmail.com"
+              href="mailto:vbhole257@gmail.com"
               className="text-muted hover:text-white text-sm transition-colors duration-200"
             >
-              aitezazsikandar@gmail.com
+              vbhole257@gmail.com
             </a>
           </div>
 
           <div className="flex gap-6 justify-start">
             {[
-              { label: 'GitHub', href: 'https://github.com/aitezazdev' },
-              { label: 'Source Code', href: 'https://github.com/aitezazdev/Portfolio' },
-              { label: 'LinkedIn', href: 'https://linkedin.com/in/aitezaz-sikandar' },
+              { label: 'GitHub', href: 'https://github.com/bholevaibhav' },
+              { label: 'Source Code', href: 'https://github.com/bholevaibhav/Portfolio' },
+              { label: 'LinkedIn', href: 'https://linkedin.com/in/vaibhav-bhole-0302' },
             ].map((s) => (
               <a
                 key={s.label}
@@ -470,7 +470,7 @@ const Navbar: React.FC<NavbarProps> = ({ hamburgerOnly = false }) => {
               ref={logoRef}
               className="text-warm text-lg font-sans tracking-wide font-medium"
             >
-              Aitezaz.
+              Vaibhav.
             </strong>
             <ul
               ref={linksContainerRef}
@@ -502,7 +502,7 @@ const Navbar: React.FC<NavbarProps> = ({ hamburgerOnly = false }) => {
         >
           <div className="flex justify-between items-center px-6 sm:px-8 h-20 w-full">
             <strong className="text-warm text-lg font-sans tracking-wide font-medium">
-              Aitezaz.
+              Vaibhav.
             </strong>
             <div className="w-10 h-10" />
           </div>
@@ -519,10 +519,9 @@ const Navbar: React.FC<NavbarProps> = ({ hamburgerOnly = false }) => {
           hamburgerOnly
             ? { opacity: 1, scale: 1 }
             : {
-                opacity: isTransitioning ? 0 : 0,
-                scale: isTransitioning ? 0 : 0,
                 pointerEvents: isTransitioning ? 'none' : 'auto',
                 transition: 'opacity 0.5s ease-in-out',
+                ...(isTransitioning ? { opacity: 0, scale: 0 } : {}),
               }
         }
         aria-label="Toggle menu"

@@ -14,10 +14,10 @@ const AmbientGeometry = dynamic(() => import('@/components/canvas/AmbientGeometr
 
 const RoleTicker = () => {
   const roles = [
-    'Full Stack Developer',
-    'React & Next.js Engineer',
-    'MERN Stack Developer',
-    'Open to Work Worldwide',
+    'Lead Full Stack Engineer',
+    'AI Architect',
+    'React & Next.js Ecosystem',
+    'Python & Node.js',
   ];
   const [currentIdx, setCurrentIdx] = useState<number>(0);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -285,17 +285,17 @@ const HomeBanner = () => {
         <div className="text-center">
           <h1
             ref={nameRef}
-            aria-label="Aitezaz Sikandar"
+            aria-label="Vaibhav Bhole"
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
             className="name-heading font-display text-6xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-[9rem] select-none font-bold leading-none uppercase cursor-pointer overflow-hidden mb-5"
           >
             <span aria-hidden="true" data-hero-name="mobile" className="block md:hidden">
-              <span className="block">{splitText('Aitezaz')}</span>
-              <span className="block">{splitText('Sikandar')}</span>
+              <span className="block">{splitText('Vaibhav')}</span>
+              <span className="block">{splitText('Bhole')}</span>
             </span>
             <span aria-hidden="true" data-hero-name="desktop" className="hidden md:block">
-              {splitText('Aitezaz Sikandar')}
+              {splitText('Vaibhav Bhole')}
             </span>
           </h1>
         </div>
@@ -328,7 +328,7 @@ const HomeBanner = () => {
                 variant="light"
               />
               <AnimatedButton
-                onClick={() => window.open('/01_aitezaz_resume.pdf', '_blank')}
+                onClick={() => window.open('/resume.html', '_blank')}
                 topText="RESUME"
                 bottomText="DOWNLOAD →"
                 variant="outline"

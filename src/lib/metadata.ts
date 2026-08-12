@@ -2,29 +2,30 @@ import { Metadata } from 'next';
 
 export const siteMetadata: Metadata = {
   title: {
-    default: 'Aitezaz Sikandar - Full Stack Developer',
-    template: '%s | Aitezaz Sikandar',
+    default: 'Vaibhav Bhole - Lead Full Stack Engineer & AI Architect',
+    template: '%s | Vaibhav Bhole',
   },
   description:
-    'Web developer specializing in React, Next.js, and MERN Stack development. Building fast, scalable, and user-focused web applications.',
+    'Portfolio of Vaibhav Bhole, Lead Full Stack Engineer & AI Architect specializing in React, Next.js, Node.js, Python, and AI-Augmented Development.',
   keywords: [
-    'Aitezaz Sikandar',
+    'Vaibhav Bhole',
     'Web Developer',
     'Frontend Developer',
-    'Full Stack Developer',
+    'Full Stack Engineer',
+    'AI Architect',
     'Next.js',
     'React',
-    'JavaScript',
-    'MERN Stack',
+    'Node.js',
+    'Python',
     'Portfolio',
   ],
   authors: [
     {
-      name: 'Aitezaz Sikandar Khan',
+      name: 'Vaibhav Bhole',
     },
   ],
-  creator: 'Aitezaz Sikandar',
-  metadataBase: new URL('https://aitezaz.xyz'),
+  creator: 'Vaibhav Bhole',
+  metadataBase: new URL('https://github.com/bholevaibhav'),
   alternates: {
     canonical: './',
   },
@@ -32,26 +33,26 @@ export const siteMetadata: Metadata = {
     icon: '/logo.webp',
   },
   openGraph: {
-    title: 'Aitezaz Sikandar - Full Stack Developer',
+    title: 'Vaibhav Bhole - Lead Full Stack Engineer',
     description:
-      'Portfolio of Aitezaz Sikandar, Full Stack Developer specializing in MERN stack, Next.js, and polished web experiences.',
-    url: 'https://aitezaz.xyz',
-    siteName: 'Aitezaz Sikandar Portfolio',
+      'Portfolio of Vaibhav Bhole, Lead Full Stack Engineer & AI Architect specializing in enterprise systems and AI workflows.',
+    url: 'https://github.com/bholevaibhav',
+    siteName: 'Vaibhav Bhole Portfolio',
     images: [
       {
         url: '/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'Aitezaz Sikandar - Full Stack Developer',
+        alt: 'Vaibhav Bhole - Lead Full Stack Engineer',
       },
     ],
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Aitezaz Sikandar - Full Stack Developer',
+    title: 'Vaibhav Bhole - Lead Full Stack Engineer',
     description:
-      'Portfolio of Aitezaz Sikandar, Full Stack Developer specializing in MERN stack, Next.js, and polished web experiences.',
+      'Portfolio of Vaibhav Bhole, Lead Full Stack Engineer & AI Architect specializing in enterprise systems and AI workflows.',
     images: ['/og-image.png'],
   },
   robots: {

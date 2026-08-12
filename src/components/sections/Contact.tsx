@@ -236,7 +236,7 @@ const Contact = () => {
                 type="button"
                 aria-label="Copy email address to clipboard"
                 onClick={() => {
-                  navigator.clipboard.writeText('aitezazsikandar@gmail.com');
+                  navigator.clipboard.writeText('vbhole257@gmail.com');
                   const toast = document.getElementById('email-copy-toast');
                   if (toast) {
                     toast.style.opacity = '1';
@@ -253,7 +253,7 @@ const Contact = () => {
                   whiteSpace: 'nowrap',
                 }}
               >
-                aitezazsikandar@gmail.com
+                vbhole257@gmail.com
                 <span className="absolute bottom-0 left-0 w-full h-[2px] bg-accent origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out block" />
               </button>
             </div>

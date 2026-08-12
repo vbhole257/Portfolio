@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vaibhav Bhole - Resume</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #34495e;
+            --text-color: #333;
+            --light-gray: #f5f6fa;
+            --border-color: #dcdde1;
+            --accent-color: #3498db;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background-color: #fff;
+        }
+
+        h1, h2, h3, h4 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        .contact-info {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 0.95rem;
+        }
+
+        .contact-info a {
+            color: var(--accent-color);
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        section {
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            font-size: 1.4rem;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 5px;
+            margin-top: 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
+        }
+
+        .skill-category {
+            display: flex;
+            align-items: baseline;
+        }
+
+        .skill-title {
+            font-weight: 700;
+            width: 180px;
+            flex-shrink: 0;
+            color: var(--primary-color);
+        }
+
+        .skill-list {
+            flex-grow: 1;
+        }
+
+        .experience-item {
+            margin-bottom: 20px;
+        }
+
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 5px;
+        }
+
+        .company {
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        .role {
+            font-weight: 600;
+            color: var(--secondary-color);
+            font-style: italic;
+        }
+
+        .date {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        ul {
+            margin-top: 5px;
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 6px;
+        }
+
+        .project-item {
+            margin-bottom: 20px;
+        }
+
+        .project-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
+        .project-subtitle {
+            font-style: italic;
+            color: #555;
+            margin-bottom: 5px;
+        }
+        
+        .tech-stack {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 600px) {
+            .skill-category {
+                flex-direction: column;
+            }
+            .skill-title {
+                width: 100%;
+                margin-bottom: 5px;
+            }
+            .experience-header {
+                flex-direction: column;
+            }
+            .date {
+                margin-top: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Vaibhav Bhole</h1>
+        <div class="subtitle">Full Stack Software Engineer</div>
+        
+        <div class="contact-info">
+            Indore, MP | +91 7611111302 | <a href="mailto:vbhole257@gmail.com">vbhole257@gmail.com</a><br>
+            GitHub: <a href="https://github.com/vbhole257" target="_blank">https://github.com/vbhole257</a> | 
+            LinkedIn: <a href="https://linkedin.com/in/vaibhav-bhole" target="_blank">https://linkedin.com/in/vaibhav-bhole</a>
+        </div>
+    </header>
+
+    <section>
+        <h2>Professional Summary</h2>
+        <p>Full Stack Software Engineer with 3+ years of professional software engineering experience and a prior engineering background. Experienced in building enterprise SaaS applications using React, TypeScript, Next.js, Node.js, FastAPI, PostgreSQL, and REST APIs. Skilled in developing multi-tenant applications, authentication and authorization systems, reusable frontend architecture, backend integrations, and production debugging. Delivered solutions across mortgage technology, enterprise form platforms, analytics, and AI automation, including a multi-LLM workflow that automated a process previously requiring 8+ months of engineering effort. Hands-on experience with Docker, GitHub Actions, AWS, CI/CD, and cloud-native application architecture.</p>
+    </section>
+
+    <section>
+        <h2>Technical Skills</h2>
+        <div class="skills-grid">
+            <div class="skill-category">
+                <div class="skill-title">Languages</div>
+                <div class="skill-list">TypeScript, JavaScript, Python, SQL</div>
+            </div>
+            <div class="skill-category">
+                <div class="skill-title">Frontend</div>
+                <div class="skill-list">React, Next.js, Vite, Tailwind CSS, Redux Toolkit, TanStack Query, React Hook Form, TanStack Table</div>
+            </div>
+            <div class="skill-category">
+                <div class="skill-title">Backend</div>
+                <div class="skill-list">Node.js, Express.js, FastAPI, Django, REST APIs, JWT, Authentication & Authorization, Prisma ORM</div>
+            </div>
+            <div class="skill-category">
+                <div class="skill-title">Databases</div>
+                <div class="skill-list">PostgreSQL, SQL</div>
+            </div>
+            <div class="skill-category">
+                <div class="skill-title">Cloud & DevOps</div>
+                <div class="skill-list">AWS, Docker, Docker Compose, GitHub Actions, Nginx, CI/CD</div>
+            </div>
+            <div class="skill-category">
+                <div class="skill-title">Architecture</div>
+                <div class="skill-list">Multi-Tenant SaaS, RBAC, RESTful Architecture, Cloud-Native Applications, System Design</div>
+            </div>
+            <div class="skill-category">
+                <div class="skill-title">AI / Automation</div>
+                <div class="skill-list">LLMs, Claude, Gemini, Prompt Engineering, AI Automation, AI Workflows</div>
+            </div>
+            <div class="skill-category">
+                <div class="skill-title">Tools</div>
+                <div class="skill-list">Git, GitHub</div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>Professional Experience</h2>
+        
+        <div class="experience-item">
+            <div class="experience-header">
+                <div>
+                    <span class="role">Software Engineer (Full Stack)</span> — <span class="company">ANRX Solutions / IO DataLabs</span>
+                </div>
+                <span class="date">June 2023 – Present | Indore, MP</span>
+            </div>
+            <ul>
+                <li>Developed enterprise SaaS applications using React, TypeScript, Next.js, FastAPI, Node.js, and PostgreSQL, delivering end-to-end features from UI implementation through API integration and production deployment.</li>
+                <li>Built reusable React/TypeScript UI architecture adopted across 3 B2B SaaS products, reducing duplicated frontend implementation and accelerating feature delivery.</li>
+                <li>Contributed to FastAPI and Node.js backend services, implementing API enhancements, debugging production issues, and improving application reliability.</li>
+                <li><strong>AI Automation:</strong> Engineered multi-LLM workflows using Claude and Gemini to automate form-generation logic, replacing a manual process estimated at 8+ months of engineering effort.</li>
+            </ul>
+
+            <h4 style="margin-top: 15px; margin-bottom: 5px; font-size: 1.05rem;">Key Projects & Achievements:</h4>
+            
+            <div style="margin-bottom: 10px; font-size: 0.95rem;">
+                <strong>JMJ Mortgage Platform (Hive):</strong> <em>A comprehensive B2B SaaS mortgage origination platform facilitating end-to-end loan applications, tracking, and document workflows.</em>
+                <ul style="margin-top: 3px;">
+                    <li>Engineered a Node.js multi-tenant build CLI and dynamic routing architecture that enabled deployment of a shared SaaS codebase across 3 B2B mortgage clients.</li>
+                    <li>Built a JSON-driven loan application wizard supporting highly configurable workflows and dynamic form rendering.</li>
+                    <li>Developed staff dashboards using TanStack Table and integrated HelloSign e-signature workflows into mortgage application processes.</li>
+                </ul>
+            </div>
+            
+            <div style="margin-bottom: 10px; font-size: 0.95rem;">
+                <strong>io-forms (Enterprise Form Builder):</strong> <em>An internal tool designed to rapidly generate dynamic, highly complex user interfaces from JSON schemas.</em>
+                <ul style="margin-top: 3px;">
+                    <li>Built a high-performance, embeddable form-rendering engine using React, Vite, and json-logic-js.</li>
+                </ul>
+            </div>
+            
+            <div style="margin-bottom: 10px; font-size: 0.95rem;">
+                <strong>IO DataLabs Website (io-website):</strong> <em>The primary corporate landing page featuring interactive 3D elements and dynamic content.</em>
+                <ul style="margin-top: 3px;">
+                    <li>Developed a Next.js 16 + Three.js website with Markdown-based content management and SEO-focused architecture.</li>
+                </ul>
+            </div>
+            
+            <div style="margin-bottom: 10px; font-size: 0.95rem;">
+                <strong>MAPP (Dealer Analytics Platform):</strong> <em>A legacy dashboard application providing business intelligence and analytics for automotive dealers.</em>
+                <ul style="margin-top: 3px;">
+                    <li>Maintained a legacy Django/React SPA, integrating REST APIs, SAML SSO, and data-grid functionality.</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="experience-item">
+            <div class="experience-header">
+                <div>
+                    <span class="role">Mechanical Engineer</span> — <span class="company">Designers CAD CAM, Rambagh, Indore</span>
+                </div>
+                <span class="date">2017 – 2023</span>
+            </div>
+            <ul>
+                <li>Worked in mechanical design and engineering operations, collaborating across production and quality activities.</li>
+                <li>Developed strong analytical problem-solving, technical documentation, stakeholder communication, process improvement, and project coordination skills.</li>
+                <li>Built a strong engineering foundation before transitioning into professional software engineering through self-directed technical development.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section>
+        <h2>Projects</h2>
+        
+        <div class="project-item">
+            <div class="project-title">Phoenix PM</div>
+            <div class="project-subtitle">Cloud-Native Multi-Tenant Project Management SaaS</div>
+            <div class="tech-stack"><strong>Tech Stack:</strong> React, TypeScript, Node.js, Express, PostgreSQL, Prisma, JWT, Docker, Docker Compose, GitHub Actions, AWS</div>
+            <ul>
+                <li>Designed normalized PostgreSQL schemas using Prisma ORM for organizations, users, projects, tasks, and role-based access control.</li>
+                <li>Developed RESTful backend services using Node.js, Express.js, Prisma, and JWT, implementing authentication and authorization.</li>
+                <li>Implemented multi-tenant data isolation with organization-scoped resources and role-based permissions.</li>
+                <li>Containerized frontend and backend services using Docker and Docker Compose for consistent local and production environments.</li>
+                <li>Built GitHub Actions CI/CD pipelines to automate application builds, testing, and deployment workflows to AWS.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section>
+        <h2>Education</h2>
+        <div class="experience-header" style="margin-bottom: 0;">
+            <div>
+                <span class="company" style="font-size: 1.1rem;">Bachelor of Engineering (B.E.) in Mechanical Engineering</span>
+            </div>
+            <span class="date">2017</span>
+        </div>
+        <div style="font-style: italic; color: #555;">Vindhya Institute of Technology and Science (RGPV), Indore, MP</div>
+    </section>
+
+</body>
+</html>

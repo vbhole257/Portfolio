@@ -1,26 +1,26 @@
 # Portfolio
 
-The personal portfolio of [**Aitezaz Sikandar**](https://github.com/aitezazdev). Built with Next.js 15, GSAP, and Lenis, it features scroll-driven animations, animated page transitions, smooth scrolling, and a working contact form.
+The personal portfolio of [**Vaibhav Bhole**](https://github.com/bholevaibhav). Built with Next.js 15, GSAP, and Lenis, it features scroll-driven animations, animated page transitions, smooth scrolling, and a working contact form.
 
-**Live Site:** [aitezaz.xyz](https://aitezaz.xyz)
+**Live Site:** [github.com/bholevaibhav](https://github.com/bholevaibhav)
 
-## Features
+## Key Features
 
-- Scroll-driven GSAP animations using ScrollTrigger
-- Smooth scrolling powered by Lenis
-- Animated page transitions using next-transition-router
-- Custom cursor with interactive hover states
-- Film grain overlay, marquee strips, and dynamic interactive background
-- Contact form backed by Nodemailer with validation and spam checks
-- Vercel Analytics and Google Analytics integration
-- Fully typed with TypeScript
+- **Next.js 15 (App Router)**: Fast server-rendering & React 19 server components
+- **Scroll Animations**: Complex scroll-triggered effects powered by **GSAP** & **ScrollTrigger**
+- **Smooth Scrolling**: Implemented using **Lenis** for seamless viewport movement
+- **Page Transitions**: Seamless cross-page animations using **next-transition-router**
+- **3D Hero Effect**: Subtle background visual elements built with **Three.js** & **React Three Fiber**
+- **Custom Cursor**: Interactive floating preview cards on hover (desktop)
+- **Contact Form**: Functional API route for email delivery via **Nodemailer**
+- **Performance**: Optimized images, dynamic imports, and reduced-motion fallback states
 
 ## Getting Started
 
-**Prerequisites:** Node.js 18+ and npm.
+First, clone the repository and install dependencies:
 
 ```bash
-git clone https://github.com/aitezazdev/Portfolio.git
+git clone https://github.com/bholevaibhav/Portfolio.git
 cd Portfolio
 npm install
 ```
