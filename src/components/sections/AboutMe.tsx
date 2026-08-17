@@ -17,34 +17,8 @@ Highly proficient in AI-Augmented Development, leveraging Agentic AI (Claude 3.5
 Whether I am designing zero-to-one architectures or integrating complex domains like mortgage operations, my core focus remains unchanged: creating scalable software that brings people joy, solves real problems, and leaves a lasting positive impact.`;
   
   const sectionRef = useRef<HTMLDivElement>(null);
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
 
-  // IntersectionObserver for lazy loading video & auto-pause off-screen
-  useEffect(() => {
-    const video = videoRef.current;
-    const container = containerRef.current;
-    if (!video || !container) return;
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            video.play().catch(() => {});
-          } else {
-            video.pause();
-          }
-        });
-      },
-      { rootMargin: '100px', threshold: 0.15 },
-    );
-
-    observer.observe(container);
-
-    return () => {
-      observer.disconnect();
-    };
-  }, []);
 
   useGSAP(
     () => {
@@ -118,39 +92,25 @@ Whether I am designing zero-to-one architectures or integrating complex domains 
             />
           </div>
 
-          <div className="grid grid-cols-12 gap-6 md:gap-8 pb-20 items-center">
-            <div className="col-span-12 md:col-span-5 lg:col-span-5 flex items-center justify-center">
+          <div className="grid grid-cols-12 gap-8 md:gap-12 pb-20 items-center">
+            <div className="col-span-12 md:col-span-5 lg:col-span-4 flex items-center justify-center">
               <div
-                ref={containerRef}
-                className="about-image-wrapper relative group w-full max-w-[350px] md:max-w-[380px] h-[360px] md:h-[480px] bg-elevated-dark rounded-2xl overflow-hidden border border-border-subtler shadow-2xl [will-change:transform,opacity]"
+                className="about-image-wrapper relative group w-full max-w-[280px] md:max-w-[320px] aspect-[4/5] bg-elevated-dark rounded-2xl overflow-hidden border border-border-subtler shadow-2xl [will-change:transform,opacity]"
               >
-                <video
-                  ref={videoRef}
-                  loop
-                  muted
-                  playsInline
-                  preload="metadata"
-                  poster="/nature-poster.webp"
-                  aria-label="Ambient nature scenery"
-                  className="w-full h-full object-cover transition-opacity duration-700"
-                >
-                  <source src="/nature-live.webm" type="video/webm" />
-                  <source src="/nature-live.mp4" type="video/mp4" />
-                  <Image
-                    src="/nature-poster.webp"
-                    alt="Ambient nature scenery fallback"
-                    fill
-                    sizes="(max-width: 768px) 350px, 380px"
-                    className="object-cover"
-                  />
-                </video>
-
-                {/* Subtle gradient overlay to match site aesthetic */}
-                <div className="absolute inset-0 bg-gradient-to-t from-ink/60 via-transparent to-transparent pointer-events-none" />
+                <Image
+                  src="/vaibhav-headshot.png"
+                  alt="Vaibhav Bhole"
+                  fill
+                  sizes="(max-width: 768px) 280px, 320px"
+                  className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                  priority
+                />
+                {/* Subtle gradient overlay to blend perfectly with dark theme */}
+                <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/20 to-transparent pointer-events-none" />
               </div>
             </div>
 
-            <div className="col-span-12 md:col-span-7 lg:col-span-6 md:col-start-6 lg:col-start-7 flex flex-col justify-center space-y-8">
+            <div className="col-span-12 md:col-span-7 lg:col-span-8 flex flex-col justify-center space-y-8">
               <span className="about-label text-sm sm:text-base md:text-base text-warm uppercase tracking-[0.3em] font-medium text-center md:text-left inline-block">
                 (About Me)
               </span>

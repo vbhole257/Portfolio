@@ -269,11 +269,9 @@ export default function Providers({ children }: { children: React.ReactNode }) {
         className="fixed inset-0 z-[9995] bg-ink flex items-center justify-center pointer-events-none scale-y-0"
         style={{ transformOrigin: 'bottom', willChange: 'transform' }}
       >
-        <div
-          ref={textRef}
-          className="text-cream font-display text-4xl sm:text-6xl md:text-7xl font-bold uppercase tracking-widest opacity-0"
-        >
-          {pageName}
+        <div ref={textRef} className="opacity-0 flex flex-col items-center gap-4">
+          <div className="w-8 h-8 border-2 border-border-subtler border-t-accent-light rounded-full animate-spin"></div>
+          <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-gray-soft">Loading</span>
         </div>
       </div>
     </TransitionRouter>
