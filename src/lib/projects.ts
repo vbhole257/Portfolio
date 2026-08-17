@@ -72,10 +72,9 @@ const projects: Project[] = [
       'Containerized backend services using Docker and established a comprehensive test suite using Jest.',
     ],
     images: [
-      '/Projects/ecommerce/1.webp',
-      '/Projects/ecommerce/2.webp',
+      '/Projects/phoenix-pm/1.png',
     ],
-    hoverImage: '/Projects/ecommerce/1.webp',
+    hoverImage: '/Projects/phoenix-pm/1.png',
     github: 'https://github.com/bholevaibhav',
     liveUrl: '',
   },
