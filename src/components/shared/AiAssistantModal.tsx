@@ -121,45 +121,46 @@ export default function AiAssistantModal({ isOpen, onClose }: AiAssistantModalPr
   };
 
   return (
-    <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4 sm:p-6 bg-black/80 backdrop-blur-md animate-fadeIn">
+    <div className="fixed inset-0 z-[9999] flex items-center justify-center p-2 sm:p-6 bg-black/80 backdrop-blur-md animate-fadeIn">
       {/* Backdrop click */}
       <div className="absolute inset-0" onClick={() => { playClickSound(); onClose(); }} />
 
       {/* Modal Container */}
-      <div className="relative w-full max-w-2xl h-[600px] max-h-[85vh] bg-cream dark:bg-ink border border-charcoal/20 dark:border-white/15 rounded-3xl flex flex-col overflow-hidden shadow-2xl z-10 text-charcoal dark:text-cream">
+      <div className="relative w-full max-w-2xl h-[85dvh] sm:h-[600px] max-h-[90dvh] bg-cream dark:bg-ink border border-charcoal/20 dark:border-white/15 rounded-2xl sm:rounded-3xl flex flex-col overflow-hidden shadow-2xl z-10 text-charcoal dark:text-cream">
         {/* Header */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-charcoal/10 dark:border-white/10 bg-charcoal/5 dark:bg-white/5">
-          <div className="flex items-center gap-3">
-            <div className="p-2 rounded-xl bg-accent/15 text-accent">
-              <FiCpu className="w-5 h-5" />
+        <div className="flex items-center justify-between px-4 sm:px-6 py-3 sm:py-4 border-b border-charcoal/10 dark:border-white/10 bg-charcoal/5 dark:bg-white/5 shrink-0">
+          <div className="flex items-center gap-2.5 sm:gap-3">
+            <div className="p-1.5 sm:p-2 rounded-xl bg-accent/15 text-accent">
+              <FiCpu className="w-4 h-4 sm:w-5 sm:h-5" />
             </div>
             <div>
-              <h2 className="font-mono text-sm font-black uppercase tracking-wider flex items-center gap-2">
-                <span>Ask Vaibhav’s AI Assistant</span>
-                <span className="px-2 py-0.5 rounded-full bg-accent/10 border border-accent/20 text-[10px] text-accent font-semibold">
+              <h2 className="font-mono text-xs sm:text-sm font-black uppercase tracking-wider flex items-center gap-1.5 sm:gap-2">
+                <span>Ask Vaibhav’s AI</span>
+                <span className="px-1.5 py-0.5 rounded-full bg-accent/10 border border-accent/20 text-[9px] sm:text-[10px] text-accent font-semibold">
                   Recruiter Bot
                 </span>
               </h2>
-              <p className="text-[11px] text-gray-soft font-mono">Instant answers for qualification checklists</p>
+              <p className="text-[10px] sm:text-[11px] text-gray-soft font-mono">Instant answers for qualification checklists</p>
             </div>
           </div>
           <button
             onClick={() => { playClickSound(); onClose(); }}
             onMouseEnter={playHoverSound}
             className="p-2 rounded-full hover:bg-charcoal/10 dark:hover:bg-white/10 transition-colors"
+            aria-label="Close modal"
           >
             <FiX className="w-5 h-5" />
           </button>
         </div>
 
         {/* Preset Questions Bar */}
-        <div className="px-6 py-3 border-b border-charcoal/10 dark:border-white/10 bg-charcoal/2 dark:bg-white/2 flex gap-2 overflow-x-auto no-scrollbar">
+        <div className="px-4 sm:px-6 py-2.5 sm:py-3 border-b border-charcoal/10 dark:border-white/10 bg-charcoal/2 dark:bg-white/2 flex gap-2 overflow-x-auto no-scrollbar shrink-0">
           {PRESET_QUESTIONS.map((pq, idx) => (
             <button
               key={idx}
               onClick={() => handleSend(pq)}
               onMouseEnter={playHoverSound}
-              className="shrink-0 px-3 py-1.5 rounded-full bg-charcoal/5 dark:bg-white/5 hover:bg-accent/10 hover:border-accent/30 border border-charcoal/10 dark:border-white/10 text-[11px] font-mono transition-all text-left"
+              className="shrink-0 px-3 py-1 rounded-full bg-charcoal/5 dark:bg-white/5 hover:bg-accent/10 hover:border-accent/30 border border-charcoal/10 dark:border-white/10 text-[10px] sm:text-[11px] font-mono transition-all text-left"
             >
               <span className="text-accent font-bold">?</span> {pq}
             </button>
@@ -167,19 +168,19 @@ export default function AiAssistantModal({ isOpen, onClose }: AiAssistantModalPr
         </div>
 
         {/* Message Thread */}
-        <div className="flex-1 overflow-y-auto p-6 space-y-4 font-sans text-sm">
+        <div className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-3.5 font-sans text-xs sm:text-sm overscroll-contain touch-pan-y">
           {messages.map((msg) => (
             <div
               key={msg.id}
-              className={`flex gap-3 ${msg.sender === 'user' ? 'justify-end' : 'justify-start'}`}
+              className={`flex gap-2.5 sm:gap-3 ${msg.sender === 'user' ? 'justify-end' : 'justify-start'}`}
             >
               {msg.sender === 'ai' && (
-                <div className="w-8 h-8 rounded-full bg-accent/15 text-accent flex items-center justify-center shrink-0 mt-1">
-                  <FiCpu className="w-4 h-4" />
+                <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-accent/15 text-accent flex items-center justify-center shrink-0 mt-0.5">
+                  <FiCpu className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                 </div>
               )}
               <div
-                className={`max-w-[80%] p-4 rounded-2xl ${
+                className={`max-w-[85%] sm:max-w-[80%] p-3.5 sm:p-4 rounded-2xl ${
                   msg.sender === 'user'
                     ? 'bg-accent text-white rounded-tr-none'
                     : 'bg-charcoal/5 dark:bg-white/5 border border-charcoal/10 dark:border-white/10 rounded-tl-none'
@@ -187,7 +188,7 @@ export default function AiAssistantModal({ isOpen, onClose }: AiAssistantModalPr
               >
                 <div className="whitespace-pre-line leading-relaxed">{msg.text}</div>
                 <div
-                  className={`mt-1.5 text-[10px] font-mono text-right ${
+                  className={`mt-1 text-[9px] sm:text-[10px] font-mono text-right ${
                     msg.sender === 'user' ? 'text-white/70' : 'text-gray-soft'
                   }`}
                 >
@@ -195,17 +196,17 @@ export default function AiAssistantModal({ isOpen, onClose }: AiAssistantModalPr
                 </div>
               </div>
               {msg.sender === 'user' && (
-                <div className="w-8 h-8 rounded-full bg-charcoal/10 dark:bg-white/10 text-charcoal dark:text-cream flex items-center justify-center shrink-0 mt-1">
-                  <FiUser className="w-4 h-4" />
+                <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-charcoal/10 dark:bg-white/10 text-charcoal dark:text-cream flex items-center justify-center shrink-0 mt-0.5">
+                  <FiUser className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                 </div>
               )}
             </div>
           ))}
 
           {isTyping && (
-            <div className="flex gap-3 justify-start items-center text-gray-soft text-xs font-mono">
-              <div className="w-8 h-8 rounded-full bg-accent/15 text-accent flex items-center justify-center shrink-0">
-                <FiCpu className="w-4 h-4" />
+            <div className="flex gap-2.5 sm:gap-3 justify-start items-center text-gray-soft text-xs font-mono">
+              <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-accent/15 text-accent flex items-center justify-center shrink-0">
+                <FiCpu className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
               </div>
               <div className="p-3 rounded-2xl bg-charcoal/5 dark:bg-white/5 border border-charcoal/10 dark:border-white/10 flex items-center gap-1.5">
                 <span className="w-2 h-2 rounded-full bg-accent animate-bounce" />
@@ -223,20 +224,21 @@ export default function AiAssistantModal({ isOpen, onClose }: AiAssistantModalPr
             e.preventDefault();
             handleSend();
           }}
-          className="p-4 border-t border-charcoal/10 dark:border-white/10 bg-charcoal/5 dark:bg-white/5 flex gap-2"
+          className="p-3 sm:p-4 border-t border-charcoal/10 dark:border-white/10 bg-charcoal/5 dark:bg-white/5 flex gap-2 shrink-0"
         >
+          {/* Note: text-base sm:text-xs prevents iOS Safari auto-zoom on input focus! */}
           <input
             type="text"
             value={inputQuery}
             onChange={(e) => setInputQuery(e.target.value)}
-            placeholder="Ask about skills, experience, projects, or availability..."
-            className="flex-1 px-4 py-2.5 rounded-xl bg-cream dark:bg-ink border border-charcoal/15 dark:border-white/15 text-xs font-mono focus:outline-none focus:border-accent"
+            placeholder="Ask about skills, experience, or availability..."
+            className="flex-1 px-3.5 py-2.5 rounded-xl bg-cream dark:bg-ink border border-charcoal/15 dark:border-white/15 text-base sm:text-xs font-mono focus:outline-none focus:border-accent"
           />
           <button
             type="submit"
             onClick={playClickSound}
             onMouseEnter={playHoverSound}
-            className="px-4 py-2.5 rounded-xl bg-accent text-white font-mono text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 hover:bg-accent/90 transition-all shrink-0"
+            className="px-3.5 sm:px-4 py-2.5 rounded-xl bg-accent text-white font-mono text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 hover:bg-accent/90 transition-all shrink-0"
           >
             <span>Send</span>
             <FiSend className="w-3.5 h-3.5" />

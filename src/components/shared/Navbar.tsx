@@ -590,7 +590,7 @@ const Navbar: React.FC<NavbarProps> = ({ hamburgerOnly = false }) => {
           setIsAiModalOpen(true);
         }}
         onMouseEnter={playHoverSound}
-        className="fixed bottom-6 right-6 z-[9970] inline-flex items-center gap-2.5 px-4 py-3 rounded-full bg-accent text-white font-mono text-xs font-bold uppercase tracking-wider shadow-2xl hover:bg-accent/90 hover:scale-105 active:scale-95 transition-all group"
+        className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-[9970] inline-flex items-center gap-2 sm:gap-2.5 px-3.5 py-2.5 sm:px-4 sm:py-3 rounded-full bg-accent text-white font-mono text-[11px] sm:text-xs font-bold uppercase tracking-wider shadow-2xl hover:bg-accent/90 hover:scale-105 active:scale-95 transition-all group touch-manipulation"
         title="Ask Vaibhav’s AI Assistant"
       >
         <span className="relative flex h-2.5 w-2.5">
