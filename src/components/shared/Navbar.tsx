@@ -7,6 +7,11 @@ import { useLenis } from '@/components/providers/SmoothScrollProvider';
 import AnimatedLink from '@/components/ui/AnimateLink';
 import { useHandleLinkClick } from '@/lib/navigation';
 import Lenis from '@studio-freight/lenis';
+import { useSound } from '@/components/providers/SoundProvider';
+import LiveStatusBadge from '@/components/shared/LiveStatusBadge';
+import RecruiterHubModal from '@/components/shared/RecruiterHubModal';
+import AiAssistantModal from '@/components/shared/AiAssistantModal';
+import { FiVolume2, FiVolumeX, FiBriefcase, FiCpu } from 'react-icons/fi';
 
 interface AnimatedHamburgerProps {
   isOpen: boolean;
@@ -63,9 +68,19 @@ interface FullscreenMenuProps {
   onClose: () => void;
   handleLinkClick: (href: string) => void;
   links: LinkItem[];
+  onOpenRecruiterHub: () => void;
+  onOpenAiAssistant: () => void;
 }
 
-const FullscreenMenu: React.FC<FullscreenMenuProps> = ({ isOpen, isTransitioning, onClose, handleLinkClick, links }) => {
+const FullscreenMenu: React.FC<FullscreenMenuProps> = ({
+  isOpen,
+  isTransitioning,
+  onClose,
+  handleLinkClick,
+  links,
+  onOpenRecruiterHub,
+  onOpenAiAssistant,
+}) => {
   const menuRef = useRef<HTMLDivElement>(null);
   const panelRef = useRef<HTMLDivElement>(null);
   const tlRef = useRef<gsap.core.Timeline | null>(null);
@@ -75,6 +90,7 @@ const FullscreenMenu: React.FC<FullscreenMenuProps> = ({ isOpen, isTransitioning
   const lineBotRef = useRef<HTMLDivElement>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
   const magnetRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const { playClickSound, playHoverSound } = useSound();
 
   useEffect(() => {
     if (!menuRef.current) return;
@@ -174,7 +190,7 @@ const FullscreenMenu: React.FC<FullscreenMenuProps> = ({ isOpen, isTransitioning
         />
         <div
           ref={lineBotRef}
-          className="absolute bottom-[170px] md:bottom-[100px] left-0 right-0 h-px bg-border-subtler"
+          className="absolute bottom-[200px] md:bottom-[120px] left-0 right-0 h-px bg-border-subtler"
           style={{ transformOrigin: 'right', transform: 'scaleX(0)' }}
         />
 
@@ -182,12 +198,12 @@ const FullscreenMenu: React.FC<FullscreenMenuProps> = ({ isOpen, isTransitioning
           <span className="text-gray-mid font-mono text-xs tracking-widest uppercase">Navigation</span>
         </div>
 
-        <nav className="absolute top-[80px] bottom-[170px] md:bottom-[100px] left-0 right-0 flex flex-col justify-center px-10 md:px-16 gap-2">
+        <nav className="absolute top-[80px] bottom-[200px] md:bottom-[120px] left-0 right-0 flex flex-col justify-center px-10 md:px-16 gap-2">
           {links.map((link, i) => (
             <div
               key={link.href}
               ref={(el) => { linksRef.current[i] = el; }}
-              className="overflow-hidden py-2"
+              className="overflow-hidden py-1.5"
             >
               <div
                 ref={(el) => { magnetRefs.current[i] = el; }}
@@ -196,13 +212,17 @@ const FullscreenMenu: React.FC<FullscreenMenuProps> = ({ isOpen, isTransitioning
                 className="inline-block"
               >
                 <button
-                  onClick={() => handleLinkClick(link.href)}
+                  onClick={() => {
+                    playClickSound();
+                    handleLinkClick(link.href);
+                  }}
+                  onMouseEnter={playHoverSound}
                   className="group flex items-center gap-4 md:gap-6 text-left animate-link-row"
                 >
                   <span className="text-gray-mid font-mono text-xs md:text-sm transition-colors duration-300 group-hover:text-accent">
                     {String(i + 1).padStart(2, '0')}
                   </span>
-                  <span className="font-display text-[3.2rem] sm:text-[4rem] md:text-[5rem] font-black uppercase leading-none tracking-tight text-cream hover:text-accent transition-colors duration-300 flex overflow-hidden">
+                  <span className="font-display text-[2.8rem] sm:text-[3.5rem] md:text-[4.5rem] font-black uppercase leading-none tracking-tight text-cream hover:text-accent transition-colors duration-300 flex overflow-hidden">
                     {link.name.split('').map((char, ci) => (
                       <span
                         key={ci}
@@ -220,28 +240,54 @@ const FullscreenMenu: React.FC<FullscreenMenuProps> = ({ isOpen, isTransitioning
               </div>
             </div>
           ))}
+
+          {/* Quick Recruiter Tools in Menu */}
+          <div className="mt-4 flex flex-wrap gap-2">
+            <button
+              onClick={() => {
+                onClose();
+                onOpenRecruiterHub();
+              }}
+              onMouseEnter={playHoverSound}
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-accent text-white font-mono text-xs font-bold uppercase tracking-wider hover:bg-accent/90 transition-all"
+            >
+              <FiBriefcase className="w-4 h-4" />
+              <span>Recruiter Hub</span>
+            </button>
+
+            <button
+              onClick={() => {
+                onClose();
+                onOpenAiAssistant();
+              }}
+              onMouseEnter={playHoverSound}
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/10 text-cream font-mono text-xs font-bold uppercase tracking-wider hover:bg-white/20 border border-white/15 transition-all"
+            >
+              <FiCpu className="w-4 h-4 text-accent" />
+              <span>Ask AI Bot</span>
+            </button>
+          </div>
         </nav>
 
         <div
           ref={metaRef}
-          className="absolute bottom-0 left-0 right-0 h-[170px] md:h-[100px] pl-20 pr-10 md:px-16 pt-6 pb-6 md:pb-10 flex flex-col md:flex-row gap-4 md:gap-0 justify-between items-start md:items-end"
+          className="absolute bottom-0 left-0 right-0 h-[200px] md:h-[120px] pl-10 pr-10 md:px-16 pt-4 pb-6 flex flex-col md:flex-row gap-4 md:gap-0 justify-between items-start md:items-end"
           style={{ opacity: 0 }}
         >
           <div className="space-y-1 text-left">
-            <p className="text-gray-mid font-mono text-xs uppercase tracking-widest mb-2">Get in Touch</p>
+            <p className="text-gray-mid font-mono text-xs uppercase tracking-widest mb-1">Get in Touch</p>
             <a
-              href="mailto:vbhole257@gmail.com"
-              className="text-muted hover:text-white text-sm transition-colors duration-200"
+              href="mailto:bholevaibhav257@gmail.com"
+              className="text-muted hover:text-white text-xs sm:text-sm font-mono transition-colors duration-200"
             >
-              vbhole257@gmail.com
+              bholevaibhav257@gmail.com
             </a>
           </div>
 
-          <div className="flex gap-6 justify-start">
+          <div className="flex gap-4 justify-start flex-wrap">
             {[
-              { label: 'GitHub', href: 'https://github.com/bholevaibhav' },
-              { label: 'Source Code', href: 'https://github.com/bholevaibhav/Portfolio' },
-              { label: 'LinkedIn', href: 'https://linkedin.com/in/vaibhav-bhole-0302' },
+              { label: 'GitHub', href: 'https://github.com/vbhole257' },
+              { label: 'LinkedIn', href: 'https://www.linkedin.com/in/vaibhav-bhole-0302/' },
             ].map((s) => (
               <a
                 key={s.label}
@@ -260,7 +306,6 @@ const FullscreenMenu: React.FC<FullscreenMenuProps> = ({ isOpen, isTransitioning
   );
 };
 
-
 interface NavbarProps {
   hamburgerOnly?: boolean;
 }
@@ -271,14 +316,20 @@ const Navbar: React.FC<NavbarProps> = ({ hamburgerOnly = false }) => {
   const mobileNavRef = useRef<HTMLDivElement>(null);
   const logoRef = useRef<HTMLElement>(null);
   const linksContainerRef = useRef<HTMLUListElement>(null);
+
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
+  const [isRecruiterHubOpen, setIsRecruiterHubOpen] = useState<boolean>(false);
+  const [isAiModalOpen, setIsAiModalOpen] = useState<boolean>(false);
   const [preloaderComplete, setPreloaderComplete] = useState<boolean>(false);
   const [hasAnimated, setHasAnimated] = useState<boolean>(false);
   const [shouldHideNav, setShouldHideNav] = useState<boolean>(false);
+
   const lenisRef = useLenis() as React.RefObject<Lenis | null> | null;
   const lenis = lenisRef?.current;
   const { stage, isReady } = useTransitionState();
   const isTransitioning = stage === 'entering' || stage === 'leaving';
+
+  const { soundEnabled, toggleSound, playClickSound, playHoverSound } = useSound();
 
   useEffect(() => {
     const hasShownPreloader = sessionStorage.getItem('preloader-shown');
@@ -291,7 +342,6 @@ const Navbar: React.FC<NavbarProps> = ({ hamburgerOnly = false }) => {
     }
   }, []);
 
-  // Initial scroll position check — determines whether nav should hide on mount
   useEffect(() => {
     if (hamburgerOnly) return;
     const checkScrollPosition = () => {
@@ -303,7 +353,6 @@ const Navbar: React.FC<NavbarProps> = ({ hamburgerOnly = false }) => {
     return () => clearTimeout(timer);
   }, [hamburgerOnly, isReady]);
 
-  // Set initial positions based on scroll state
   useEffect(() => {
     if (hamburgerOnly) {
       if (hamburgerRef.current) {
@@ -349,7 +398,6 @@ const Navbar: React.FC<NavbarProps> = ({ hamburgerOnly = false }) => {
     }
   }, [hamburgerOnly, shouldHideNav]);
 
-  // Entry animation after preloader + page transition
   useEffect(() => {
     if (hamburgerOnly) return;
     if (!preloaderComplete || !isReady || isTransitioning) return;
@@ -375,7 +423,6 @@ const Navbar: React.FC<NavbarProps> = ({ hamburgerOnly = false }) => {
     return () => clearTimeout(timer);
   }, [preloaderComplete, isReady, hasAnimated, hamburgerOnly, isTransitioning, shouldHideNav]);
 
-  // Scroll-triggered: slide nav up on scroll, show hamburger in about section
   useEffect(() => {
     if (hamburgerOnly) return;
     if (!hasAnimated || isTransitioning) return;
@@ -425,14 +472,14 @@ const Navbar: React.FC<NavbarProps> = ({ hamburgerOnly = false }) => {
 
   useEffect(() => {
     if (!lenis) return;
-    if (isMenuOpen) {
+    if (isMenuOpen || isRecruiterHubOpen || isAiModalOpen) {
       lenis.stop();
     } else {
       lenis.start();
       ScrollTrigger.refresh();
     }
-    document.body.style.overflow = isMenuOpen ? 'hidden' : '';
-  }, [isMenuOpen, lenis]);
+    document.body.style.overflow = isMenuOpen || isRecruiterHubOpen || isAiModalOpen ? 'hidden' : '';
+  }, [isMenuOpen, isRecruiterHubOpen, isAiModalOpen, lenis]);
 
   useEffect(() => {
     if (isTransitioning && isMenuOpen) {
@@ -440,7 +487,11 @@ const Navbar: React.FC<NavbarProps> = ({ hamburgerOnly = false }) => {
     }
   }, [isTransitioning, isMenuOpen]);
 
-  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+  const toggleMenu = () => {
+    playClickSound();
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   const handleLinkClick = useHandleLinkClick(setIsMenuOpen);
 
   const links = [
@@ -462,34 +513,86 @@ const Navbar: React.FC<NavbarProps> = ({ hamburgerOnly = false }) => {
       {!hamburgerOnly && (
         <nav
           ref={navRef}
-          className="hidden md:block fixed w-full py-6 z-50 bg-cream"
+          className="hidden md:block fixed w-full py-5 z-50 bg-cream/90 backdrop-blur-md border-b border-warm/10"
           style={navStyle}
         >
           <div className="w-full px-6 sm:px-8 md:px-12 lg:px-16 flex justify-between items-center">
-            <strong
-              ref={logoRef}
-              className="text-warm text-lg font-sans tracking-wide font-medium"
-            >
-              Vaibhav.
-            </strong>
-            <ul
-              ref={linksContainerRef}
-              className="flex gap-6 text-warm text-base font-sans font-medium uppercase tracking-wider"
-            >
-              {links.filter((l) => !l.menuOnly).map((link) => (
-                <AnimatedLink key={link.href}>
-                  <a
-                    href={link.href}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      handleLinkClick(link.href);
-                    }}
-                  >
-                    {link.name}
-                  </a>
-                </AnimatedLink>
-              ))}
-            </ul>
+            {/* Left: Logo & Live Status Ticker */}
+            <div className="flex items-center gap-6">
+              <strong
+                ref={logoRef}
+                className="text-warm text-lg font-sans tracking-wide font-medium cursor-pointer"
+                onClick={() => handleLinkClick('/#top')}
+              >
+                Vaibhav.
+              </strong>
+              <LiveStatusBadge />
+            </div>
+
+            {/* Right: Nav Links & Recruiter Tools */}
+            <div className="flex items-center gap-6">
+              <ul
+                ref={linksContainerRef}
+                className="flex items-center gap-6 text-warm text-sm font-sans font-medium uppercase tracking-wider"
+              >
+                {links.filter((l) => !l.menuOnly).map((link) => (
+                  <AnimatedLink key={link.href}>
+                    <a
+                      href={link.href}
+                      onMouseEnter={playHoverSound}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        playClickSound();
+                        handleLinkClick(link.href);
+                      }}
+                    >
+                      {link.name}
+                    </a>
+                  </AnimatedLink>
+                ))}
+              </ul>
+
+              {/* Recruiter Fast-Track Hub Button */}
+              <button
+                onClick={() => {
+                  playClickSound();
+                  setIsRecruiterHubOpen(true);
+                }}
+                onMouseEnter={playHoverSound}
+                className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-accent text-white font-mono text-xs font-bold uppercase tracking-wider hover:bg-accent/90 transition-all shadow-md shadow-accent/20 hover:scale-105 active:scale-95"
+              >
+                <FiBriefcase className="w-3.5 h-3.5" />
+                <span>Hire Me</span>
+              </button>
+
+              {/* Ask AI Bot Button */}
+              <button
+                onClick={() => {
+                  playClickSound();
+                  setIsAiModalOpen(true);
+                }}
+                onMouseEnter={playHoverSound}
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-charcoal/5 dark:bg-white/5 hover:bg-charcoal/10 dark:hover:bg-white/10 border border-charcoal/10 dark:border-white/10 font-mono text-xs text-charcoal dark:text-cream transition-all"
+                title="Ask Vaibhav’s AI Assistant"
+              >
+                <FiCpu className="w-3.5 h-3.5 text-accent" />
+                <span>Ask AI</span>
+              </button>
+
+              {/* Sound Toggle Button */}
+              <button
+                onClick={toggleSound}
+                onMouseEnter={playHoverSound}
+                className="p-2 rounded-full bg-charcoal/5 dark:bg-white/5 hover:bg-charcoal/10 dark:hover:bg-white/10 border border-charcoal/10 dark:border-white/10 text-charcoal dark:text-cream transition-all"
+                title={soundEnabled ? 'Mute Sound FX' : 'Enable Tactile Sound FX'}
+              >
+                {soundEnabled ? (
+                  <FiVolume2 className="w-4 h-4 text-accent animate-pulse" />
+                ) : (
+                  <FiVolumeX className="w-4 h-4 text-gray-soft" />
+                )}
+              </button>
+            </div>
           </div>
         </nav>
       )}
@@ -500,11 +603,32 @@ const Navbar: React.FC<NavbarProps> = ({ hamburgerOnly = false }) => {
           className="mobile-navbar md:hidden fixed w-full z-50 bg-cream/90 backdrop-blur-md border-b border-warm/10"
           style={navStyle}
         >
-          <div className="flex justify-between items-center px-6 sm:px-8 h-20 w-full">
-            <strong className="text-warm text-lg font-sans tracking-wide font-medium">
-              Vaibhav.
-            </strong>
-            <div className="w-10 h-10" />
+          <div className="flex justify-between items-center px-4 h-16 w-full">
+            <div className="flex items-center gap-3">
+              <strong className="text-warm text-base font-sans tracking-wide font-medium">
+                Vaibhav.
+              </strong>
+              <LiveStatusBadge compact />
+            </div>
+
+            <div className="flex items-center gap-2">
+              <button
+                onClick={() => {
+                  playClickSound();
+                  setIsRecruiterHubOpen(true);
+                }}
+                className="px-2.5 py-1 rounded-full bg-accent text-white font-mono text-[11px] font-bold uppercase tracking-wider"
+              >
+                Hire Me
+              </button>
+
+              <button
+                onClick={toggleSound}
+                className="p-1.5 rounded-full bg-charcoal/5 dark:bg-white/5"
+              >
+                {soundEnabled ? <FiVolume2 className="w-4 h-4 text-accent" /> : <FiVolumeX className="w-4 h-4 text-gray-soft" />}
+              </button>
+            </div>
           </div>
         </nav>
       )}
@@ -537,6 +661,19 @@ const Navbar: React.FC<NavbarProps> = ({ hamburgerOnly = false }) => {
         onClose={() => setIsMenuOpen(false)}
         handleLinkClick={handleLinkClick}
         links={links}
+        onOpenRecruiterHub={() => setIsRecruiterHubOpen(true)}
+        onOpenAiAssistant={() => setIsAiModalOpen(true)}
+      />
+
+      {/* Recruiter & AI Modals */}
+      <RecruiterHubModal
+        isOpen={isRecruiterHubOpen}
+        onClose={() => setIsRecruiterHubOpen(false)}
+      />
+
+      <AiAssistantModal
+        isOpen={isAiModalOpen}
+        onClose={() => setIsAiModalOpen(false)}
       />
     </>
   );

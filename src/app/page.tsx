@@ -4,7 +4,7 @@
  * Licensed under the MIT License. See LICENSE in the project root for license information.
  * Project: Portfolio
  * Author: Vaibhav Bhole (bholevaibhav)
- * Website: https://github.com/bholevaibhav
+ * Website: https://github.com/vbhole257
  */
 
 'use client';

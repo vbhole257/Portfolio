@@ -24,7 +24,7 @@ export const siteMetadata: Metadata = {
     },
   ],
   creator: 'Vaibhav Bhole',
-  metadataBase: new URL('https://github.com/bholevaibhav'),
+  metadataBase: new URL('https://github.com/vbhole257'),
   alternates: {
     canonical: './',
   },
@@ -35,7 +35,7 @@ export const siteMetadata: Metadata = {
     title: 'Vaibhav Bhole - Software Developer',
     description:
       'Portfolio of Vaibhav Bhole, a Software Developer specializing in scalable frontend architecture and AI workflows.',
-    url: 'https://github.com/bholevaibhav',
+    url: 'https://github.com/vbhole257',
     siteName: 'Vaibhav Bhole Portfolio',
     images: [
       {

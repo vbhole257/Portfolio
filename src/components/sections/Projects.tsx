@@ -312,6 +312,24 @@ function MobileSnapProjects({ projects, router }: MobileSnapProjectsProps) {
                 ))}
               </div>
 
+              {project.architectureMetrics && (
+                <div className="flex flex-wrap gap-1.5 mb-3">
+                  {project.architectureMetrics.map((m) => (
+                    <span
+                      key={m}
+                      className="mc-tag font-mono text-[9px] font-bold px-2 py-0.5 rounded-full"
+                      style={{
+                        background: 'rgba(196, 93, 62, 0.15)',
+                        color: '#E07A5F',
+                        border: '1px solid rgba(196, 93, 62, 0.3)',
+                      }}
+                    >
+                      {m}
+                    </span>
+                  ))}
+                </div>
+              )}
+
               <h3
                 className="mc-title font-black uppercase leading-none text-white mb-5"
                 style={{ fontSize: 'clamp(1.75rem,7.5vw,2.6rem)', letterSpacing: '-0.025em' }}
@@ -515,6 +533,11 @@ export default function ProjectsPage() {
                   {project.tech.map((t) => (
                     <span key={t} className="px-3 py-1 rounded-full bg-transparent border border-gray-300 text-warm text-xs font-medium">
                       {t}
+                    </span>
+                  ))}
+                  {project.architectureMetrics?.map((m) => (
+                    <span key={m} className="px-3 py-1 rounded-full bg-accent/10 border border-accent/30 text-accent text-xs font-mono font-semibold">
+                      {m}
                     </span>
                   ))}
                 </div>

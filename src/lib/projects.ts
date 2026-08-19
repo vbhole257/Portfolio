@@ -6,6 +6,7 @@ export interface Project {
   tech: string[];
   description: string;
   myRole: string[];
+  architectureMetrics?: string[];
   images: string[];
   hoverImage: string;
   github: string;
@@ -19,6 +20,11 @@ const projects: Project[] = [
     title: 'The Hive Ecosystem',
     year: '2024',
     tech: ['React', 'TypeScript', 'Vite', 'Python', 'FastAPI', 'Encompass API'],
+    architectureMetrics: [
+      '⚡ 60FPS Dynamic Forms',
+      '🔒 Bidirectional API Sync Engine',
+      '🗄️ PostgreSQL Relational Graph',
+    ],
     description:
       'A multi-portal mortgage origination platform ecosystem serving Loan Officers, Borrowers, and Escrow agents. Engineered a CLI-style onboarding wizard with robust route protection and dynamic rules-based forms for financial data.',
     myRole: [
@@ -32,7 +38,7 @@ const projects: Project[] = [
       '/Projects/hive/2.png',
     ],
     hoverImage: '/Projects/hive/1.png',
-    github: 'https://github.com/bholevaibhav',
+    github: 'https://github.com/vbhole257',
     liveUrl: '',
   },
   {
@@ -41,6 +47,11 @@ const projects: Project[] = [
     title: 'IO-Forms',
     year: '2024',
     tech: ['Next.js', 'React', 'Python', 'FastAPI'],
+    architectureMetrics: [
+      '🚀 Drag-&-Drop Form Engine',
+      '⚡ Sub-100ms API Submission',
+      '🎨 Custom Component Schema',
+    ],
     description:
       'A full-stack dynamic form builder application for creating, managing, and publishing dynamic forms tightly integrated with a high-performance backend.',
     myRole: [
@@ -54,7 +65,7 @@ const projects: Project[] = [
       '/Projects/io-forms/3.png',
     ],
     hoverImage: '/Projects/io-forms/1.png',
-    github: 'https://github.com/bholevaibhav',
+    github: 'https://github.com/vbhole257',
     liveUrl: '',
   },
   {
@@ -63,6 +74,11 @@ const projects: Project[] = [
     title: 'Phoenix-PM',
     year: '2023',
     tech: ['React', 'Node.js', 'Prisma', 'PostgreSQL', 'Tailwind CSS', 'Docker'],
+    architectureMetrics: [
+      '🐳 Docker Containerized Stack',
+      '🗄️ Prisma ORM & Type-Safe Queries',
+      '🔒 REST API Auth & Middleware',
+    ],
     description:
       'A modern, high-performance internal project management application built to streamline company workflows, owning the entire stack from database schema to UI.',
     myRole: [
@@ -75,7 +91,7 @@ const projects: Project[] = [
       '/Projects/phoenix-pm/1.png',
     ],
     hoverImage: '/Projects/phoenix-pm/1.png',
-    github: 'https://github.com/bholevaibhav',
+    github: 'https://github.com/vbhole257',
     liveUrl: '',
   },
   {
@@ -84,6 +100,11 @@ const projects: Project[] = [
     title: 'IO Website',
     year: '2023',
     tech: ['Next.js 16', 'Three.js', 'Framer Motion'],
+    architectureMetrics: [
+      '⚡ 99/100 Performance Score',
+      '🎨 Interactive 3D WebGL Canvas',
+      '📱 100% Mobile Responsive',
+    ],
     description:
       'A highly visual, performant marketing website showcasing advanced 3D rendering and micro-animations for enterprise SEO and marketing.',
     myRole: [
@@ -95,7 +116,7 @@ const projects: Project[] = [
       '/Projects/io-website/1.png',
     ],
     hoverImage: '/Projects/io-website/1.png',
-    github: 'https://github.com/bholevaibhav',
+    github: 'https://github.com/vbhole257',
     liveUrl: '',
   },
 ];
@@ -107,5 +128,3 @@ export function getAllProjects(): Project[] {
 export function getProjectBySlug(slug: string): Project | undefined {
   return projects.find((p) => p.slug === slug);
 }
-
-

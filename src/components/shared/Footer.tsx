@@ -93,18 +93,13 @@ const Footer = () => {
             </h3>
             <ul className="flex flex-col gap-3 sm:gap-4 text-warm text-xs sm:text-sm font-sans font-medium uppercase tracking-wide">
               <AnimatedLink>
-                <a href="https://linkedin.com/in/vaibhav-bhole-0302" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.linkedin.com/in/vaibhav-bhole-0302/" target="_blank" rel="noopener noreferrer">
                   Linkedin
                 </a>
               </AnimatedLink>
               <AnimatedLink>
-                <a href="https://github.com/bholevaibhav" target="_blank" rel="noopener noreferrer">
+                <a href="https://github.com/vbhole257" target="_blank" rel="noopener noreferrer">
                   Github
-                </a>
-              </AnimatedLink>
-              <AnimatedLink>
-                <a href="https://github.com/bholevaibhav/Portfolio" target="_blank" rel="noopener noreferrer">
-                  Source Code
                 </a>
               </AnimatedLink>
             </ul>

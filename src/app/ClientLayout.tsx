@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import SmoothScrollProvider from '@/components/providers/SmoothScrollProvider';
+import SoundProvider from '@/components/providers/SoundProvider';
 import GlobalPreloader from '@/components/shared/GlobalPreloader';
 import CustomCursor from '@/components/shared/CustomCursor';
 import Providers from './providers';
@@ -11,7 +12,7 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
   const [showCursor, setShowCursor] = useState(false);
   useEffect(() => {
     console.log(
-      '%c Creative Portfolio Blueprint %c by Vaibhav Bhole (https://github.com/bholevaibhav) ',
+      '%c Creative Portfolio Blueprint %c by Vaibhav Bhole (https://github.com/vbhole257) ',
       'background: #080807; color: #e8e8e3; padding: 4px 8px; border-radius: 4px 0 0 4px; font-family: monospace; font-weight: bold;',
       'background: #e8e8e3; color: #080807; padding: 4px 8px; border-radius: 0 4px 4px 0; font-family: monospace; font-weight: bold; border: 1px solid #080807;'
     );
@@ -29,8 +30,9 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
       window.removeEventListener('preloaderComplete', handlePreloaderComplete);
     };
   }, []);
+
   return (
-    <>
+    <SoundProvider>
       <div className="film-grain pointer-events-none" />
       {showCursor && <CustomCursor />}
       <GlobalPreloader />
@@ -38,7 +40,6 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
       <Providers>
         <SmoothScrollProvider>{children}</SmoothScrollProvider>
       </Providers>
-    </>
+    </SoundProvider>
   );
 }
-
