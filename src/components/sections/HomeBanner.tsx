@@ -14,10 +14,10 @@ const AmbientGeometry = dynamic(() => import('@/components/canvas/AmbientGeometr
 
 const RoleTicker = () => {
   const roles = [
-    'Lead Full Stack Engineer',
-    'AI Architect',
+    'Software Developer',
     'React & Next.js Ecosystem',
-    'Python & Node.js',
+    'Scalable Frontend Architecture',
+    'AI-Powered Automation',
   ];
   const [currentIdx, setCurrentIdx] = useState<number>(0);
   const containerRef = useRef<HTMLDivElement>(null);

@@ -2,21 +2,20 @@ import { Metadata } from 'next';
 
 export const siteMetadata: Metadata = {
   title: {
-    default: 'Vaibhav Bhole - Lead Full Stack Engineer & AI Architect',
+    default: 'Vaibhav Bhole - Software Developer',
     template: '%s | Vaibhav Bhole',
   },
   description:
-    'Portfolio of Vaibhav Bhole, Lead Full Stack Engineer & AI Architect specializing in React, Next.js, Node.js, Python, and AI-Augmented Development.',
+    'Portfolio of Vaibhav Bhole, a Software Developer specializing in React, Next.js, scalable frontend architecture, and AI-powered workflows.',
   keywords: [
     'Vaibhav Bhole',
     'Web Developer',
     'Frontend Developer',
-    'Full Stack Engineer',
-    'AI Architect',
+    'Software Developer',
     'Next.js',
     'React',
-    'Node.js',
-    'Python',
+    'TypeScript',
+    'AI Workflows',
     'Portfolio',
   ],
   authors: [
@@ -33,9 +32,9 @@ export const siteMetadata: Metadata = {
     icon: '/logo.webp',
   },
   openGraph: {
-    title: 'Vaibhav Bhole - Lead Full Stack Engineer',
+    title: 'Vaibhav Bhole - Software Developer',
     description:
-      'Portfolio of Vaibhav Bhole, Lead Full Stack Engineer & AI Architect specializing in enterprise systems and AI workflows.',
+      'Portfolio of Vaibhav Bhole, a Software Developer specializing in scalable frontend architecture and AI workflows.',
     url: 'https://github.com/bholevaibhav',
     siteName: 'Vaibhav Bhole Portfolio',
     images: [
@@ -43,16 +42,16 @@ export const siteMetadata: Metadata = {
         url: '/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'Vaibhav Bhole - Lead Full Stack Engineer',
+        alt: 'Vaibhav Bhole - Software Developer',
       },
     ],
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Vaibhav Bhole - Lead Full Stack Engineer',
+    title: 'Vaibhav Bhole - Software Developer',
     description:
-      'Portfolio of Vaibhav Bhole, Lead Full Stack Engineer & AI Architect specializing in enterprise systems and AI workflows.',
+      'Portfolio of Vaibhav Bhole, a Software Developer specializing in scalable frontend architecture and AI workflows.',
     images: ['/og-image.png'],
   },
   robots: {

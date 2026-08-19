@@ -9,12 +9,12 @@ import AnimatedHeading from '@/components/ui/AnimateHeading';
 const About = () => {
   const headingText = 'Who Am I';
   const descriptionText =
-    "I am a Lead Full Stack Engineer and AI Architect driven by a passion for building clean, intuitive, and reliable digital experiences.";
-  const aboutMeText = `Versatile Full Stack Engineer and Architect with a proven track record of building complex enterprise systems from zero to one. Expert in modern React ecosystems (Next.js, Vite, Zustand) and scalable backends (Node.js/Express, Python/FastAPI, Prisma, PostgreSQL).
+    "I am a Software Developer driven by a passion for building scalable frontend architectures and reliable digital experiences.";
+  const aboutMeText = `Software Developer with 3+ years of professional experience building and maintaining production SaaS applications, with a strong focus on React.js, TypeScript, Next.js, and scalable frontend architecture.
 
-Highly proficient in AI-Augmented Development, leveraging Agentic AI (Claude 3.5, Gemini Pro) to achieve exceptional engineering velocity and ship end-to-end SaaS products and robust internal tools.
+I am experienced in developing reusable UI systems, integrating REST APIs, and working across the stack with Node.js, FastAPI, PostgreSQL, and multi-tenant applications.
 
-Whether I am designing zero-to-one architectures or integrating complex domains like mortgage operations, my core focus remains unchanged: creating scalable software that brings people joy, solves real problems, and leaves a lasting positive impact.`;
+Beyond traditional development, I have hands-on experience orchestrating CI/CD pipelines, containerizing applications with Docker, and engineering AI-powered automation workflows using LLMs like Claude and Gemini to drastically accelerate feature delivery.`;
   
   const sectionRef = useRef<HTMLDivElement>(null);
 
