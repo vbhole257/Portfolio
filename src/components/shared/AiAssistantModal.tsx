@@ -154,7 +154,10 @@ export default function AiAssistantModal({ isOpen, onClose }: AiAssistantModalPr
         </div>
 
         {/* Preset Questions Bar */}
-        <div className="px-4 sm:px-6 py-2.5 sm:py-3 border-b border-charcoal/10 dark:border-white/10 bg-charcoal/2 dark:bg-white/2 flex gap-2 overflow-x-auto no-scrollbar shrink-0">
+        <div
+          className="px-4 sm:px-6 py-2.5 sm:py-3 border-b border-charcoal/10 dark:border-white/10 bg-charcoal/2 dark:bg-white/2 flex gap-2 overflow-x-auto no-scrollbar shrink-0"
+          onTouchMove={(e) => e.stopPropagation()}
+        >
           {PRESET_QUESTIONS.map((pq, idx) => (
             <button
               key={idx}
@@ -168,7 +171,10 @@ export default function AiAssistantModal({ isOpen, onClose }: AiAssistantModalPr
         </div>
 
         {/* Message Thread */}
-        <div className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-3.5 font-sans text-xs sm:text-sm overscroll-contain touch-pan-y">
+        <div
+          className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-3.5 font-sans text-xs sm:text-sm overscroll-contain touch-pan-y"
+          onTouchMove={(e) => e.stopPropagation()}
+        >
           {messages.map((msg) => (
             <div
               key={msg.id}

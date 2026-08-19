@@ -39,7 +39,10 @@ export default function RecruiterHubModal({ isOpen, onClose }: RecruiterHubModal
       <div className="absolute inset-0" onClick={() => { playClickSound(); onClose(); }} />
 
       {/* Modal Container */}
-      <div className="relative w-full max-w-2xl max-h-[90dvh] bg-cream dark:bg-ink border border-charcoal/20 dark:border-white/15 rounded-2xl sm:rounded-3xl p-5 sm:p-8 shadow-2xl overflow-y-auto overscroll-contain touch-pan-y text-charcoal dark:text-cream z-10">
+      <div
+        className="relative w-full max-w-2xl max-h-[90dvh] bg-cream dark:bg-ink border border-charcoal/20 dark:border-white/15 rounded-2xl sm:rounded-3xl p-5 sm:p-8 shadow-2xl overflow-y-auto overscroll-contain touch-pan-y text-charcoal dark:text-cream z-10"
+        onTouchMove={(e) => e.stopPropagation()}
+      >
         {/* Header */}
         <div className="flex items-center justify-between pb-3 sm:pb-4 border-b border-charcoal/10 dark:border-white/10">
           <div className="flex items-center gap-2.5 sm:gap-3">
