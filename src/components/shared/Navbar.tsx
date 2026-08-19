@@ -565,20 +565,6 @@ const Navbar: React.FC<NavbarProps> = ({ hamburgerOnly = false }) => {
                 <span>Hire Me</span>
               </button>
 
-              {/* Ask AI Bot Button */}
-              <button
-                onClick={() => {
-                  playClickSound();
-                  setIsAiModalOpen(true);
-                }}
-                onMouseEnter={playHoverSound}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-charcoal/5 dark:bg-white/5 hover:bg-charcoal/10 dark:hover:bg-white/10 border border-charcoal/10 dark:border-white/10 font-mono text-xs text-charcoal dark:text-cream transition-all"
-                title="Ask Vaibhav’s AI Assistant"
-              >
-                <FiCpu className="w-3.5 h-3.5 text-accent" />
-                <span>Ask AI</span>
-              </button>
-
               {/* Sound Toggle Button */}
               <button
                 onClick={toggleSound}
@@ -596,6 +582,24 @@ const Navbar: React.FC<NavbarProps> = ({ hamburgerOnly = false }) => {
           </div>
         </nav>
       )}
+
+      {/* Floating Bottom-Right Ask AI Widget */}
+      <button
+        onClick={() => {
+          playClickSound();
+          setIsAiModalOpen(true);
+        }}
+        onMouseEnter={playHoverSound}
+        className="fixed bottom-6 right-6 z-[9970] inline-flex items-center gap-2.5 px-4 py-3 rounded-full bg-accent text-white font-mono text-xs font-bold uppercase tracking-wider shadow-2xl hover:bg-accent/90 hover:scale-105 active:scale-95 transition-all group"
+        title="Ask Vaibhav’s AI Assistant"
+      >
+        <span className="relative flex h-2.5 w-2.5">
+          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+          <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-white"></span>
+        </span>
+        <FiCpu className="w-4 h-4 text-white group-hover:rotate-12 transition-transform" />
+        <span>Ask AI</span>
+      </button>
 
       {!hamburgerOnly && (
         <nav
