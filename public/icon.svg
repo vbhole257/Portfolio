@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1A1815"/>
+      <stop offset="100%" stop-color="#0F0E0C"/>
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E07A5F"/>
+      <stop offset="100%" stop-color="#C45D3E"/>
+    </linearGradient>
+  </defs>
+  <!-- Background Squircle -->
+  <rect width="512" height="512" rx="128" fill="url(#bgGrad)"/>
+  <rect x="12" y="12" width="488" height="488" rx="116" fill="none" stroke="url(#accentGrad)" stroke-width="12" stroke-opacity="0.4"/>
+  
+  <!-- VB Monogram -->
+  <text x="240" y="275" font-family="system-ui, -apple-system, 'Space Grotesk', sans-serif" font-size="220" font-weight="900" text-anchor="middle" dominant-baseline="central" letter-spacing="-10">
+    <tspan fill="#E8E4DE">V</tspan><tspan fill="url(#accentGrad)">B</tspan>
+  </text>
+  
+  <!-- Stylized Accent Dot (matching 'Vaibhav.') -->
+  <circle cx="390" cy="355" r="22" fill="url(#accentGrad)"/>
+</svg>

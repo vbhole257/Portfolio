@@ -1,10 +1,10 @@
 /**
  * @license
- * Copyright (c) 2026 Aitezaz Sikandar. All rights reserved.
+ * Copyright (c) 2026 Vaibhav Bhole. All rights reserved.
  * Licensed under the MIT License. See LICENSE in the project root for license information.
  * Project: Portfolio
- * Author: Aitezaz Sikandar (aitezazdev)
- * Website: https://aitezaz.xyz
+ * Author: Vaibhav Bhole (bholevaibhav)
+ * Website: https://github.com/vbhole257
  */
 
 const nextConfig = {

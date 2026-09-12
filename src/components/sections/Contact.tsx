@@ -4,6 +4,9 @@ import React, { useState, useEffect, useRef } from 'react';
 import AnimatedHeading from '@/components/ui/AnimateHeading';
 import AnimateDescription from '@/components/ui/AnimateDescription';
 import AnimatedButton from '@/components/ui/AnimatedButton';
+import BuyMeCoffeeModal from '@/components/shared/BuyMeCoffeeModal';
+import { useSound } from '@/components/providers/SoundProvider';
+import { FiCoffee } from 'react-icons/fi';
 
 const Contact = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -16,6 +19,9 @@ const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [submitStatus, setSubmitStatus] = useState<'success' | 'error' | null>(null);
   const [successMessage, setSuccessMessage] = useState<string>('');
+  const [isCoffeeModalOpen, setIsCoffeeModalOpen] = useState<boolean>(false);
+
+  const { playClickSound, playHoverSound } = useSound();
 
   useEffect(() => {
     if (submitStatus) {
@@ -226,6 +232,33 @@ const Contact = () => {
             </button>
           </form>
 
+          {/* Buy Me a Coffee Support Card */}
+          <div className="mt-8 max-w-2xl mx-auto p-4 sm:p-5 rounded-2xl bg-surface-mid/60 border border-white/[0.06] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div className="space-y-1">
+              <div className="flex items-center gap-2">
+                <span className="text-base">☕</span>
+                <h4 className="font-mono text-xs sm:text-sm font-bold uppercase tracking-wider text-cream">
+                  Support My Open Work
+                </h4>
+              </div>
+              <p className="font-sans text-xs text-muted">
+                Enjoy my projects or want to buy me a coffee? Every cup fuels new ideas & software.
+              </p>
+            </div>
+            <button
+              type="button"
+              onClick={() => {
+                playClickSound();
+                setIsCoffeeModalOpen(true);
+              }}
+              onMouseEnter={playHoverSound}
+              className="shrink-0 inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-accent text-white font-mono text-xs font-bold uppercase tracking-wider hover:bg-accent/90 transition-all shadow-md shadow-accent/20 hover:scale-105 active:scale-95"
+            >
+              <FiCoffee className="w-3.5 h-3.5" />
+              <span>Buy a Coffee ☕</span>
+            </button>
+          </div>
+
           <div className="mt-16 pt-12 border-t border-elevated-dark flex flex-col md:flex-row items-center justify-between gap-6">
             <div>
               <p className="text-xs uppercase tracking-widest text-warm mb-2 font-mono">
@@ -282,6 +315,11 @@ const Contact = () => {
       >
         ✓ Copied to clipboard
       </div>
+
+      <BuyMeCoffeeModal
+        isOpen={isCoffeeModalOpen}
+        onClose={() => setIsCoffeeModalOpen(false)}
+      />
     </section>
   );
 };

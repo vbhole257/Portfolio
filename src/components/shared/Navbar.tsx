@@ -11,7 +11,9 @@ import { useSound } from '@/components/providers/SoundProvider';
 import LiveStatusBadge from '@/components/shared/LiveStatusBadge';
 import RecruiterHubModal from '@/components/shared/RecruiterHubModal';
 import AiAssistantModal from '@/components/shared/AiAssistantModal';
-import { FiVolume2, FiVolumeX, FiBriefcase, FiCpu } from 'react-icons/fi';
+import BuyMeCoffeeModal from '@/components/shared/BuyMeCoffeeModal';
+import BuyCoffeeToast from '@/components/shared/BuyCoffeeToast';
+import { FiBriefcase, FiCpu, FiCoffee } from 'react-icons/fi';
 
 interface AnimatedHamburgerProps {
   isOpen: boolean;
@@ -70,6 +72,7 @@ interface FullscreenMenuProps {
   links: LinkItem[];
   onOpenRecruiterHub: () => void;
   onOpenAiAssistant: () => void;
+  onOpenBuyMeCoffee: () => void;
 }
 
 const FullscreenMenu: React.FC<FullscreenMenuProps> = ({
@@ -80,6 +83,7 @@ const FullscreenMenu: React.FC<FullscreenMenuProps> = ({
   links,
   onOpenRecruiterHub,
   onOpenAiAssistant,
+  onOpenBuyMeCoffee,
 }) => {
   const menuRef = useRef<HTMLDivElement>(null);
   const panelRef = useRef<HTMLDivElement>(null);
@@ -241,7 +245,7 @@ const FullscreenMenu: React.FC<FullscreenMenuProps> = ({
             </div>
           ))}
 
-          {/* Quick Recruiter Tools in Menu */}
+          {/* Quick Recruiter & Support Tools in Menu */}
           <div className="mt-4 flex flex-wrap gap-2">
             <button
               onClick={() => {
@@ -265,6 +269,18 @@ const FullscreenMenu: React.FC<FullscreenMenuProps> = ({
             >
               <FiCpu className="w-4 h-4 text-accent" />
               <span>Ask AI Bot</span>
+            </button>
+
+            <button
+              onClick={() => {
+                onClose();
+                onOpenBuyMeCoffee();
+              }}
+              onMouseEnter={playHoverSound}
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-accent/20 text-cream font-mono text-xs font-bold uppercase tracking-wider hover:bg-accent/30 border border-accent/40 transition-all"
+            >
+              <FiCoffee className="w-4 h-4 text-accent" />
+              <span>Buy Me a Coffee ☕</span>
             </button>
           </div>
         </nav>
@@ -320,6 +336,7 @@ const Navbar: React.FC<NavbarProps> = ({ hamburgerOnly = false }) => {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const [isRecruiterHubOpen, setIsRecruiterHubOpen] = useState<boolean>(false);
   const [isAiModalOpen, setIsAiModalOpen] = useState<boolean>(false);
+  const [isCoffeeModalOpen, setIsCoffeeModalOpen] = useState<boolean>(false);
   const [preloaderComplete, setPreloaderComplete] = useState<boolean>(false);
   const [hasAnimated, setHasAnimated] = useState<boolean>(false);
   const [shouldHideNav, setShouldHideNav] = useState<boolean>(false);
@@ -329,7 +346,7 @@ const Navbar: React.FC<NavbarProps> = ({ hamburgerOnly = false }) => {
   const { stage, isReady } = useTransitionState();
   const isTransitioning = stage === 'entering' || stage === 'leaving';
 
-  const { soundEnabled, toggleSound, playClickSound, playHoverSound } = useSound();
+  const { playClickSound, playHoverSound } = useSound();
 
   useEffect(() => {
     const hasShownPreloader = sessionStorage.getItem('preloader-shown');
@@ -472,14 +489,14 @@ const Navbar: React.FC<NavbarProps> = ({ hamburgerOnly = false }) => {
 
   useEffect(() => {
     if (!lenis) return;
-    if (isMenuOpen || isRecruiterHubOpen || isAiModalOpen) {
+    if (isMenuOpen || isRecruiterHubOpen || isAiModalOpen || isCoffeeModalOpen) {
       lenis.stop();
     } else {
       lenis.start();
       ScrollTrigger.refresh();
     }
-    document.body.style.overflow = isMenuOpen || isRecruiterHubOpen || isAiModalOpen ? 'hidden' : '';
-  }, [isMenuOpen, isRecruiterHubOpen, isAiModalOpen, lenis]);
+    document.body.style.overflow = isMenuOpen || isRecruiterHubOpen || isAiModalOpen || isCoffeeModalOpen ? 'hidden' : '';
+  }, [isMenuOpen, isRecruiterHubOpen, isAiModalOpen, isCoffeeModalOpen, lenis]);
 
   useEffect(() => {
     if (isTransitioning && isMenuOpen) {
@@ -565,18 +582,18 @@ const Navbar: React.FC<NavbarProps> = ({ hamburgerOnly = false }) => {
                 <span>Hire Me</span>
               </button>
 
-              {/* Sound Toggle Button */}
+              {/* Buy Coffee CTA - High-Contrast & Prominently Visible */}
               <button
-                onClick={toggleSound}
+                onClick={() => {
+                  playClickSound();
+                  setIsCoffeeModalOpen(true);
+                }}
                 onMouseEnter={playHoverSound}
-                className="p-2 rounded-full bg-charcoal/5 dark:bg-white/5 hover:bg-charcoal/10 dark:hover:bg-white/10 border border-charcoal/10 dark:border-white/10 text-charcoal dark:text-cream transition-all"
-                title={soundEnabled ? 'Mute Sound FX' : 'Enable Tactile Sound FX'}
+                className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-ink text-cream border border-charcoal/30 hover:border-accent hover:bg-accent hover:text-white font-mono text-xs font-bold uppercase tracking-wider transition-all shadow-md shadow-black/10 hover:scale-105 active:scale-95 group"
+                title="Support with a coffee"
               >
-                {soundEnabled ? (
-                  <FiVolume2 className="w-4 h-4 text-accent animate-pulse" />
-                ) : (
-                  <FiVolumeX className="w-4 h-4 text-gray-soft" />
-                )}
+                <FiCoffee className="w-3.5 h-3.5 text-accent group-hover:text-white transition-colors" />
+                <span>Buy Coffee ☕</span>
               </button>
             </div>
           </div>
@@ -627,10 +644,15 @@ const Navbar: React.FC<NavbarProps> = ({ hamburgerOnly = false }) => {
               </button>
 
               <button
-                onClick={toggleSound}
-                className="p-1.5 rounded-full bg-charcoal/5 dark:bg-white/5"
+                onClick={() => {
+                  playClickSound();
+                  setIsCoffeeModalOpen(true);
+                }}
+                className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-ink text-cream border border-charcoal/30 font-mono text-[11px] font-bold tracking-wider hover:bg-accent hover:text-white transition-all shadow-sm"
+                title="Buy Coffee"
               >
-                {soundEnabled ? <FiVolume2 className="w-4 h-4 text-accent" /> : <FiVolumeX className="w-4 h-4 text-gray-soft" />}
+                <span>☕</span>
+                <span>Coffee</span>
               </button>
             </div>
           </div>
@@ -667,9 +689,10 @@ const Navbar: React.FC<NavbarProps> = ({ hamburgerOnly = false }) => {
         links={links}
         onOpenRecruiterHub={() => setIsRecruiterHubOpen(true)}
         onOpenAiAssistant={() => setIsAiModalOpen(true)}
+        onOpenBuyMeCoffee={() => setIsCoffeeModalOpen(true)}
       />
 
-      {/* Recruiter & AI Modals */}
+      {/* Recruiter, AI & Buy Coffee Modals */}
       <RecruiterHubModal
         isOpen={isRecruiterHubOpen}
         onClose={() => setIsRecruiterHubOpen(false)}
@@ -678,6 +701,16 @@ const Navbar: React.FC<NavbarProps> = ({ hamburgerOnly = false }) => {
       <AiAssistantModal
         isOpen={isAiModalOpen}
         onClose={() => setIsAiModalOpen(false)}
+      />
+
+      <BuyMeCoffeeModal
+        isOpen={isCoffeeModalOpen}
+        onClose={() => setIsCoffeeModalOpen(false)}
+      />
+
+      {/* One-time gentle welcome coffee toast */}
+      <BuyCoffeeToast
+        onOpenCoffeeModal={() => setIsCoffeeModalOpen(true)}
       />
     </>
   );

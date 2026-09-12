@@ -35,8 +35,9 @@ const spaceGrotesk = Space_Grotesk({
 export const metadata = siteMetadata;
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
+        suppressHydrationWarning
         className={`${geistSans.variable} ${geistMono.variable} ${spaceGrotesk.variable} antialiased bg-cream`}
       >
         <ClientLayout>{children}</ClientLayout>

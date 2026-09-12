@@ -29,7 +29,10 @@ export const siteMetadata: Metadata = {
     canonical: './',
   },
   icons: {
-    icon: '/logo.webp',
+    icon: [
+      { url: '/icon.svg', type: 'image/svg+xml' },
+    ],
+    apple: '/icon.svg',
   },
   openGraph: {
     title: 'Vaibhav Bhole - Software Developer',
